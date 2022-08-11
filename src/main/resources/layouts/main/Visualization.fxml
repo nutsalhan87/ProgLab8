@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.*?>
+
+<?import javafx.scene.web.WebView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<Scene xmlns="http://javafx.com/javafx"
+       xmlns:fx="http://javafx.com/fxml"
+       fx:controller="gui.controllers.main.VisualizationController">
+    <AnchorPane>
+        <HBox>
+            <WebView>
+
+            </WebView>
+        </HBox>
+    </AnchorPane>
+</Scene>

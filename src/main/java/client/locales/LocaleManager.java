@@ -1,0 +1,36 @@
+package client.locales;
+
+import gui.TextDrawable;
+
+import java.util.*;
+
+public class LocaleManager {
+    private static ResourceBundle currentLanguageResources =
+            ResourceBundle.getBundle("client.locales.Locale", Locales.RUSSIAN.locale);;
+    private static final List<TextDrawable> changeLocaleListeners = new ArrayList<>();
+
+    private LocaleManager() {}
+
+    public static String getString(String key) {
+        try {
+            return currentLanguageResources.getString(key);
+        } catch (MissingResourceException exc) {
+            return key;
+        }
+    }
+
+    public static void changeLocale(Locale locale) {
+        currentLanguageResources = ResourceBundle.getBundle("client.locales.Locale", locale);
+        callListeners();
+    }
+
+    public static void addListener(TextDrawable drawMethod) {
+        changeLocaleListeners.add(drawMethod);
+    }
+
+    private static void callListeners() {
+        for (TextDrawable changeLocaleListener : changeLocaleListeners) {
+            changeLocaleListener.drawText();
+        }
+    }
+}

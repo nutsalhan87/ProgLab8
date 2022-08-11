@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.text.TextFlow?>
+<?import javafx.scene.text.Text?>
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="gui.controllers.auxiliary.MessageController"
+            prefHeight="400.0" prefWidth="600.0"
+            style="-fx-background-color: white; -fx-background-radius: 10; -fx-border-radius: 10; -fx-border-color: black">
+    <BorderPane AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0" AnchorPane.topAnchor="0" AnchorPane.bottomAnchor="0">
+        <top>
+            <Button fx:id="closeWindowButton"
+                    onMouseMoved="#darkenButton" onMouseExited="#makeButtonTransparent" onMousePressed="#makeButtonRed"
+                    style="-fx-background-color: transparent">
+                <padding>
+                    <Insets left="10" right="10" top="10" bottom="10"/>
+                </padding>
+                <graphic>
+                    <ImageView fitWidth="20" preserveRatio="true">
+                        <Image url="@../../icons/closeIcon.png"/>
+                    </ImageView>
+                </graphic>
+            </Button>
+        </top>
+        <center>
+            <ScrollPane style="-fx-background: #FFFFFF; -fx-border-color: #FFFFFF" prefViewportWidth="590">
+                <TextFlow maxWidth="530">
+                    <Text fx:id="message" style="-fx-font-family: 'Droid Sans'; -fx-font-size: 20"/>
+                </TextFlow>
+            </ScrollPane>
+        </center>
+        <left>
+            <AnchorPane>
+                <padding>
+                    <Insets left="5" right="5"/>
+                </padding>
+            </AnchorPane>
+        </left>
+        <right>
+            <AnchorPane>
+                <padding>
+                    <Insets left="5" right="5"/>
+                </padding>
+            </AnchorPane>
+        </right>
+        <bottom>
+            <AnchorPane>
+                <padding>
+                    <Insets top="10" bottom="10"/>
+                </padding>
+            </AnchorPane>
+        </bottom>
+    </BorderPane>
+</AnchorPane>
