@@ -28,7 +28,7 @@ public class Locale_ru extends ListResourceBundle {
                 {"scriptPath", "Путь до скрипта"},
                 {"execute", "Выполнить"},
                 {"name", "Имя"},
-                {"fromName", "From имя"},
+                {"fromName", "Имя 'От'"},
                 {"distance", "Дистанция"},
                 {"remove", "Удалить"},
                 {"send", "Отправить"},
@@ -88,7 +88,13 @@ public class Locale_ru extends ListResourceBundle {
                 {"inputPositiveIntPort", "В качестве порта введите целое положительное число"},
                 {"invalidPort", "Не удалось подключиться по данному порту"},
                 {"authorizationUnsuccessful", "Не удалось авторизоваться"},
-                {"registerUnsuccessful", "Не удалось создать аккаунт"}
+                {"registerUnsuccessful", "Не удалось создать аккаунт"},
+                {"selectPoint", "Выберите точку"},
+                {"pointCreator", "Создатель точки"},
+                {"from", "От"},
+                {"to", "До"},
+                {"noNextLine", "В процессе выполнения скрипта программа дошла до конца файла, тем самым не " +
+                        "завершив его выполнение корректно"}
         };
     }
 }

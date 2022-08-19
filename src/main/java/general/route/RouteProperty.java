@@ -1,5 +1,6 @@
 package general.route;
 
+import client.locales.LocaleManager;
 import javafx.beans.property.*;
 
 import java.util.Date;
@@ -95,5 +96,47 @@ public class RouteProperty {
 
     public FloatProperty getToZ() {
         return toZ;
+    }
+
+    public boolean equalsByValues(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        RouteProperty that = (RouteProperty) o;
+
+        if (id != null ? id.get() != that.id.get() : that.id != null) return false;
+        if (name != null ? !name.get().equals(that.name.get()) : that.name != null) return false;
+        if (creationDate != null ? !creationDate.get().equals(that.creationDate.get()) : that.creationDate != null) return false;
+        if (distance != null ? distance.get() != that.distance.get() : that.distance != null) return false;
+        if (owner != null ? !owner.get().equals(that.owner.get()) : that.owner != null) return false;
+        if (x != null ? x.get() != that.x.get() : that.x != null) return false;
+        if (y != null ? y.get() != that.y.get() : that.y != null) return false;
+        if (fromX != null ? fromX.get() != that.fromX.get() : that.fromX != null) return false;
+        if (fromY != null ? fromY.get() != that.fromY.get() : that.fromY != null) return false;
+        if (fromZ != null ? fromZ.get() != that.fromZ.get() : that.fromZ != null) return false;
+        if (fromName != null ? !fromName.get().equals(that.fromName.get()) : that.fromName != null) return false;
+        if (toX != null ? toX.get() != that.toX.get() : that.toX != null) return false;
+        if (toY != null ? toY.get() != that.toY.get() : that.toY != null) return false;
+        return toZ != null ? toZ.get() == that.toZ.get() : that.toZ == null;
+    }
+
+    @Override
+    public String toString() {
+        return "RouteProperty{" +
+                "id=" + id +
+                ", name=" + name +
+                ", creationDate=" + creationDate +
+                ", distance=" + distance +
+                ", owner=" + owner +
+                ", x=" + x +
+                ", y=" + y +
+                ", fromX=" + fromX +
+                ", fromY=" + fromY +
+                ", fromZ=" + fromZ +
+                ", fromName=" + fromName +
+                ", toX=" + toX +
+                ", toY=" + toY +
+                ", toZ=" + toZ +
+                '}';
     }
 }

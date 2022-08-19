@@ -1,5 +1,6 @@
 package gui;
 
+import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
@@ -17,17 +18,21 @@ public class LanguagePopup extends PopupControl {
     public LanguagePopup(Button languageButton) {
         super();
         this.languageButton = languageButton;
-        this.setAutoHide(true);
-        this.setAutoFix(true);
-        this.setHideOnEscape(true);
-        this.setSkin(createDefaultSkin());
+        setAutoHide(true);
+        setAutoFix(true);
+        setHideOnEscape(true);
+        setSkin(createDefaultSkin());
+        Platform.runLater(() -> {
+            showPopup();
+            hide();
+        });
     }
 
     public void showPopup() {
         if (languageButton.getScene() != null && languageButton.getScene().getWindow() != null) {
-            if (!this.isShowing()) {
+            if (!isShowing()) {
                 Window parent = languageButton.getScene().getWindow();
-                this.show(parent, parent.getX() + languageButton.localToScene(0.0D, 0.0D).getX() +
+                show(parent, parent.getX() + languageButton.localToScene(0.0D, 0.0D).getX() +
                         languageButton.getScene().getX() + ((languageButton.getWidth() - ((VBox)getSkin().getNode()).getWidth()) / 2),
                         parent.getY() + languageButton.localToScene(0.0D, 0.0D).getY()
                         + languageButton.getScene().getY() + languageButton.getLayoutBounds().getHeight());

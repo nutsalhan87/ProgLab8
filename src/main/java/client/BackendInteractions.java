@@ -1,8 +1,10 @@
 package client;
 
 import general.Answer;
+import general.CommandList;
 import general.Request;
 import general.User;
+import general.route.Route;
 import general.route.RouteProperty;
 import gui.SceneControl;
 import javafx.collections.FXCollections;
@@ -12,6 +14,10 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.ConnectException;
 import java.nio.channels.SocketChannel;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.NoSuchElementException;
 
 public class BackendInteractions {
     private User user;
@@ -44,9 +50,23 @@ public class BackendInteractions {
         return routePropertyObservableList;
     }
 
-    public void setData(ObservableList<RouteProperty> data) {
-        routePropertyObservableList.clear();
-        routePropertyObservableList.addAll(data);
+    public void refreshData() throws IOException {
+        Request request = new Request(CommandList.GET_DATA, new LinkedList<>(), getUser());
+        Answer answer = sendRequestAndGetAnswer(request);
+
+        ObservableList<RouteProperty> newData = FXCollections.observableArrayList();
+        for (Route route : (List<Route>) answer.getAnswer()) {
+            newData.add(new RouteProperty(route));
+        }
+        try {
+            Iterator<RouteProperty> iterator = newData.listIterator();
+            if (routePropertyObservableList.size() < newData.size() ||
+                    routePropertyObservableList.stream().anyMatch(r -> !r.equalsByValues(iterator.next()))) {
+                routePropertyObservableList.setAll(newData);
+            }
+        } catch (NoSuchElementException exception) {
+            routePropertyObservableList.setAll(newData);
+        }
     }
 
     public void executeScript(String scriptPath) throws FileNotFoundException {

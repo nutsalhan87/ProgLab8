@@ -21,6 +21,18 @@ import java.util.ResourceBundle;
 
 public class RemoveMenuController extends AbstractSideMenu implements Initializable, TextDrawable {
     @FXML
+    private Label fromXLabel;
+    @FXML
+    private Label fromYLabel;
+    @FXML
+    private Label fromZLabel;
+    @FXML
+    private Label toXLabel;
+    @FXML
+    private Label toYLabel;
+    @FXML
+    private Label toZLabel;
+    @FXML
     private Button removeLowerButton;
     @FXML
     private Button removeGreaterButton;
@@ -47,6 +59,12 @@ public class RemoveMenuController extends AbstractSideMenu implements Initializa
         distanceLabel.setText(LocaleManager.getString("distance"));
         fromNameLabel.setText(LocaleManager.getString("fromName"));
         nameLabel.setText(LocaleManager.getString("name"));
+        fromXLabel.setText("'" + LocaleManager.getString("from") + "' X");
+        fromYLabel.setText("'" + LocaleManager.getString("from") + "' Y");
+        fromZLabel.setText("'" + LocaleManager.getString("from") + "' Z");
+        toXLabel.setText("'" + LocaleManager.getString("to") + "' X");
+        toYLabel.setText("'" + LocaleManager.getString("to") + "' Y");
+        toZLabel.setText("'" + LocaleManager.getString("to") + "' Z");
     }
 
     @FXML
@@ -56,7 +74,7 @@ public class RemoveMenuController extends AbstractSideMenu implements Initializa
             SceneControl.getBackendInteractor().sendRequestAndGetAnswer(new Request(CommandList.REMOVE_ANY_BY_DISTANCE,
                     Collections.singletonList(distance), SceneControl.getBackendInteractor().getUser()));
             closeMenuButton.fire();
-            SceneControl.getWorkspaceController().refreshData(new ActionEvent());
+            SceneControl.getBackendInteractor().refreshData();
         } catch (IllegalArgumentException iaexc) {
             SceneControl.openMessage(LocaleManager.getString(iaexc.getMessage()));
         }
@@ -69,7 +87,7 @@ public class RemoveMenuController extends AbstractSideMenu implements Initializa
             SceneControl.getBackendInteractor().sendRequestAndGetAnswer(new Request(CommandList.REMOVE_LOWER,
                     Collections.singletonList(route), SceneControl.getBackendInteractor().getUser()));
             closeMenuButton.fire();
-            SceneControl.getWorkspaceController().refreshData(new ActionEvent());
+            SceneControl.getBackendInteractor().refreshData();
         } catch (IllegalArgumentException iaexc) {
             SceneControl.openMessage(LocaleManager.getString(iaexc.getMessage()));
         }
@@ -82,7 +100,7 @@ public class RemoveMenuController extends AbstractSideMenu implements Initializa
             SceneControl.getBackendInteractor().sendRequestAndGetAnswer(new Request(CommandList.REMOVE_GREATER,
                     Collections.singletonList(route), SceneControl.getBackendInteractor().getUser()));
             closeMenuButton.fire();
-            SceneControl.getWorkspaceController().refreshData(new ActionEvent());
+            SceneControl.getBackendInteractor().refreshData();
         } catch (IllegalArgumentException iaexc) {
             SceneControl.openMessage(LocaleManager.getString(iaexc.getMessage()));
         }

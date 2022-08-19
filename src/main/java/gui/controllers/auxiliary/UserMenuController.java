@@ -6,6 +6,7 @@ import general.Request;
 import gui.SceneControl;
 import gui.TextDrawable;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -33,15 +34,14 @@ public class UserMenuController implements Initializable, TextDrawable {
         exitButton.setText(LocaleManager.getString("exit"));
     }
 
+    public void setOnAction(EventHandler<ActionEvent> eventHandler) {
+        exitButton.setOnAction(eventHandler);
+    }
+
     @FXML
     private void removeAllUsersElements(ActionEvent actionEvent) throws IOException {
         SceneControl.getBackendInteractor().sendRequestAndGetAnswer(new Request(CommandList.CLEAR,
                 Collections.emptyList(), SceneControl.getBackendInteractor().getUser()));
-        SceneControl.getWorkspaceController().refreshData(new ActionEvent());
-    }
-
-    @FXML
-    private void exit(ActionEvent actionEvent) {
-        SceneControl.logOut();
+        SceneControl.getBackendInteractor().refreshData();
     }
 }

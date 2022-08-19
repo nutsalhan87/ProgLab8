@@ -20,6 +20,18 @@ import java.util.ResourceBundle;
 
 public class AddMenuController extends AbstractSideMenu implements Initializable, TextDrawable {
     @FXML
+    private Label fromXLabel;
+    @FXML
+    private Label fromYLabel;
+    @FXML
+    private Label fromZLabel;
+    @FXML
+    private Label toXLabel;
+    @FXML
+    private Label toYLabel;
+    @FXML
+    private Label toZLabel;
+    @FXML
     private Button sendButton;
     @FXML
     private RadioButton ifMaxButton;
@@ -43,6 +55,12 @@ public class AddMenuController extends AbstractSideMenu implements Initializable
         distanceLabel.setText(LocaleManager.getString("distance"));
         sendButton.setText(LocaleManager.getString("send"));
         ifMaxButton.setText(LocaleManager.getString("ifMax"));
+        fromXLabel.setText("'" + LocaleManager.getString("from") + "' X");
+        fromYLabel.setText("'" + LocaleManager.getString("from") + "' Y");
+        fromZLabel.setText("'" + LocaleManager.getString("from") + "' Z");
+        toXLabel.setText("'" + LocaleManager.getString("to") + "' X");
+        toYLabel.setText("'" + LocaleManager.getString("to") + "' Y");
+        toZLabel.setText("'" + LocaleManager.getString("to") + "' Z");
     }
 
     @FXML
@@ -57,7 +75,7 @@ public class AddMenuController extends AbstractSideMenu implements Initializable
                         Collections.singletonList(route), SceneControl.getBackendInteractor().getUser()));
             }
             closeMenuButton.fire();
-            SceneControl.getWorkspaceController().refreshData(new ActionEvent());
+            SceneControl.getBackendInteractor().refreshData();
         } catch (IllegalArgumentException iaexc) {
             SceneControl.openMessage(LocaleManager.getString(iaexc.getMessage()));
         }

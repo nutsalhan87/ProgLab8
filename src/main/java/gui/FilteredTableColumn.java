@@ -2,7 +2,6 @@ package gui;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.ContentDisplay;
 import javafx.scene.control.TableColumn;
@@ -20,6 +19,7 @@ public class FilteredTableColumn<S, T> extends TableColumn<S, T> {
         filterIcon.setFitWidth(10);
         filterButton.setContentDisplay(ContentDisplay.LEFT);
         filterButton.setGraphic(filterIcon);
+        filterButton.getStyleClass().add("transparent-button");
         this.setGraphic(filterButton);
     }
 

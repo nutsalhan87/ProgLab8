@@ -8,16 +8,15 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.text.TextFlow?>
 <?import javafx.scene.text.Text?>
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="gui.controllers.auxiliary.MessageController"
-            prefHeight="400.0" prefWidth="600.0"
-            style="-fx-background-color: white; -fx-background-radius: 10; -fx-border-radius: 10; -fx-border-color: black">
-    <BorderPane AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0" AnchorPane.topAnchor="0" AnchorPane.bottomAnchor="0">
+<?import javafx.scene.Scene?>
+<Scene xmlns="http://javafx.com/javafx"
+       xmlns:fx="http://javafx.com/fxml"
+       fx:controller="gui.controllers.auxiliary.MessageController"
+       stylesheets="@../../css/main.css">
+    <BorderPane AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0" AnchorPane.topAnchor="0" AnchorPane.bottomAnchor="0"
+                styleClass="message">
         <top>
-            <Button fx:id="closeWindowButton"
-                    onMouseMoved="#darkenButton" onMouseExited="#makeButtonTransparent" onMousePressed="#makeButtonRed"
-                    style="-fx-background-color: transparent">
+            <Button fx:id="closeWindowButton">
                 <padding>
                     <Insets left="10" right="10" top="10" bottom="10"/>
                 </padding>
@@ -29,9 +28,9 @@
             </Button>
         </top>
         <center>
-            <ScrollPane style="-fx-background: #FFFFFF; -fx-border-color: #FFFFFF" prefViewportWidth="590">
+            <ScrollPane fx:id="scrollPane" prefViewportWidth="590">
                 <TextFlow maxWidth="530">
-                    <Text fx:id="message" style="-fx-font-family: 'Droid Sans'; -fx-font-size: 20"/>
+                    <Text fx:id="message"/>
                 </TextFlow>
             </ScrollPane>
         </center>
@@ -57,4 +56,4 @@
             </AnchorPane>
         </bottom>
     </BorderPane>
-</AnchorPane>
+</Scene>

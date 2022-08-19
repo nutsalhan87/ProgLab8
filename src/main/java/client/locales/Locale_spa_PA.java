@@ -28,7 +28,7 @@ public class Locale_spa_PA extends ListResourceBundle {
                 {"scriptPath", "Ruta de acceso al script"},
                 {"execute", "Ejecutar"},
                 {"name", "Nombre"},
-                {"fromName", "From nombre"},
+                {"fromName", "Nombre 'Desde'"},
                 {"distance", "Distancia"},
                 {"remove", "Eliminar"},
                 {"send", "Enviar"},
@@ -87,7 +87,13 @@ public class Locale_spa_PA extends ListResourceBundle {
                 {"inputPositiveIntPort", "Escriba un número entero positivo como puerto"},
                 {"invalidPort", "No se pudo conectar en este puerto"},
                 {"authorizationUnsuccessful", "No se pudo iniciar sesión"},
-                {"registerUnsuccessful", "No se pudo crear una cuenta"}
+                {"registerUnsuccessful", "No se pudo crear una cuenta"},
+                {"selectPoint", "Seleccione un punto"},
+                {"pointCreator", "Creador de puntos"},
+                {"from", "Desde"},
+                {"to", "A"},
+                {"noNextLine", "Durante la ejecución del script, el programa llegó al final del archivo, " +
+                        "por lo que no completó su ejecución correctamente"}
         };
     }
 }

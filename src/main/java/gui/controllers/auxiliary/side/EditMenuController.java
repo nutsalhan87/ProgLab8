@@ -21,6 +21,18 @@ import java.util.ResourceBundle;
 
 public class EditMenuController extends AbstractSideMenu implements Initializable, TextDrawable {
     @FXML
+    private Label fromXLabel;
+    @FXML
+    private Label fromYLabel;
+    @FXML
+    private Label fromZLabel;
+    @FXML
+    private Label toXLabel;
+    @FXML
+    private Label toYLabel;
+    @FXML
+    private Label toZLabel;
+    @FXML
     private Button removeButton;
     @FXML
     private Button sendButton;
@@ -60,6 +72,12 @@ public class EditMenuController extends AbstractSideMenu implements Initializabl
         toYField.setText(rowData.getToY().getValue().toString());
         toZField.setText(rowData.getToZ().getValue().toString());
         distanceField.setText(rowData.getDistance().getValue().toString());
+        fromXLabel.setText("'" + LocaleManager.getString("from") + "' X");
+        fromYLabel.setText("'" + LocaleManager.getString("from") + "' Y");
+        fromZLabel.setText("'" + LocaleManager.getString("from") + "' Z");
+        toXLabel.setText("'" + LocaleManager.getString("to") + "' X");
+        toYLabel.setText("'" + LocaleManager.getString("to") + "' Y");
+        toZLabel.setText("'" + LocaleManager.getString("to") + "' Z");
     }
 
     public void setIdRoute(int id) {
@@ -72,7 +90,7 @@ public class EditMenuController extends AbstractSideMenu implements Initializabl
         SceneControl.getBackendInteractor().sendRequestAndGetAnswer(new Request(CommandList.REMOVE_BY_ID,
                 Collections.singletonList(id), SceneControl.getBackendInteractor().getUser()));
         closeMenuButton.fire();
-        SceneControl.getWorkspaceController().refreshData(new ActionEvent());
+        SceneControl.getBackendInteractor().refreshData();
     }
 
     @FXML
@@ -84,7 +102,7 @@ public class EditMenuController extends AbstractSideMenu implements Initializabl
             SceneControl.getBackendInteractor().sendRequestAndGetAnswer(new Request(CommandList.UPDATE,
                     arguments, SceneControl.getBackendInteractor().getUser()));
             closeMenuButton.fire();
-            SceneControl.getWorkspaceController().refreshData(new ActionEvent());
+            SceneControl.getBackendInteractor().refreshData();
         } catch (IllegalArgumentException iaexc) {
             SceneControl.openMessage(LocaleManager.getString(iaexc.getMessage()));
         }

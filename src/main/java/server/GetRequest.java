@@ -9,9 +9,9 @@ import java.util.concurrent.Callable;
 import java.util.concurrent.locks.ReentrantLock;
 
 public class GetRequest implements Callable<Request> {
-    private Socket socket;
-    private ReentrantLock lock;
-    private org.apache.logging.log4j.Logger logger;
+    private final Socket socket;
+    private final ReentrantLock lock;
+    private final org.apache.logging.log4j.Logger logger;
     public GetRequest(Socket socket) {
         this.socket = socket;
         lock = new ReentrantLock();

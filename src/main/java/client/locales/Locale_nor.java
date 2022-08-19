@@ -28,7 +28,7 @@ public class Locale_nor extends ListResourceBundle {
                 {"scriptPath", "Veien til manuset"},
                 {"execute", "Utføre"},
                 {"name", "Navn"},
-                {"fromName", "From navn"},
+                {"fromName", "Navn 'Fra'"},
                 {"distance", "Avstand"},
                 {"remove", "Fjerne"},
                 {"send", "Sende"},
@@ -87,7 +87,13 @@ public class Locale_nor extends ListResourceBundle {
                 {"inputPositiveIntPort", "Skriv inn et positivt heltall som port"},
                 {"invalidPort", "Kunne ikke koble til denne porten"},
                 {"authorizationUnsuccessful", "Kunne ikke logge inn"},
-                {"registerUnsuccessful", "Kunne ikke opprette en konto"}
+                {"registerUnsuccessful", "Kunne ikke opprette en konto"},
+                {"selectPoint", "Velg et punkt"},
+                {"pointCreator", "Point Creator"},
+                {"from", "Fra"},
+                {"to", "Til"},
+                {"noNextLine", "Under utførelsen av skriptet nådde programmet slutten av filen, og fullførte dermed" +
+                        " ikke utførelsen riktig"}
         };
     }
 }

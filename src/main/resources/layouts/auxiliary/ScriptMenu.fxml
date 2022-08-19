@@ -7,10 +7,11 @@
 <VBox xmlns="http://javafx.com/javafx"
       xmlns:fx="http://javafx.com/fxml"
       fx:controller="gui.controllers.auxiliary.ScriptMenuController"
-      alignment="CENTER" spacing="15" style="-fx-background-color: white; -fx-border-color: black">
+      alignment="CENTER" spacing="15"
+      stylesheets="@../../css/main.css" styleClass="popup">
     <padding>
         <Insets bottom="10" left="10" right="10" top="10" />
     </padding>
     <TextField fx:id="scriptPathField" />
-    <Button fx:id="scriptExecButton" onAction="#executeScript"/>
+    <Button fx:id="scriptExecButton" onAction="#executeScript" styleClass="green-button"/>
 </VBox>

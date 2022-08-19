@@ -12,7 +12,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.VBox;
 
 import java.io.IOException;
 import java.net.ConnectException;
@@ -27,13 +26,9 @@ public class AuthorizingController implements Initializable, TextDrawable {
     @FXML
     private Button languageButton;
     @FXML
-    private Button backButton;
-    @FXML
     private TextField nameField;
     @FXML
     private PasswordField passwordField;
-    @FXML
-    private Button enterButton;
 
     private LanguagePopup languagePopup;
 

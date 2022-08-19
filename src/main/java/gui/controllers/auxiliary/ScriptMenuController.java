@@ -8,11 +8,11 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.VBox;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
+import java.util.NoSuchElementException;
 import java.util.ResourceBundle;
 
 public class ScriptMenuController implements Initializable, TextDrawable {
@@ -37,9 +37,11 @@ public class ScriptMenuController implements Initializable, TextDrawable {
     private void executeScript(ActionEvent actionEvent) throws IOException {
         try {
             SceneControl.getBackendInteractor().executeScript(scriptPathField.getText());
-            SceneControl.getWorkspaceController().refreshData(new ActionEvent());
+            SceneControl.getBackendInteractor().refreshData();
         } catch (FileNotFoundException fnexc) {
             SceneControl.openMessage(LocaleManager.getString("noFileScript"));
+        } catch (NoSuchElementException neexc) {
+            SceneControl.openMessage(LocaleManager.getString("noNextLine"));
         }
     }
 }

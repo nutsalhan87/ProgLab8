@@ -2,16 +2,19 @@ package gui;
 
 import general.route.RouteProperty;
 import gui.controllers.auxiliary.FilterMenuController;
+import javafx.animation.FadeTransition;
+import javafx.animation.Interpolator;
+import javafx.animation.ScaleTransition;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
-import javafx.scene.Parent;
 import javafx.scene.control.PopupControl;
 import javafx.scene.control.Skin;
-import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 import javafx.stage.Window;
+import javafx.util.Duration;
 
 import java.io.IOException;
 import java.net.URL;
@@ -26,10 +29,10 @@ public class FilterPopup<S, T> extends PopupControl {
         super();
         this.filteredTableColumn = filteredTableColumn;
         this.getter = getter;
-        this.setAutoHide(true);
-        this.setAutoFix(true);
-        this.setHideOnEscape(true);
-        this.setSkin(createDefaultSkin());
+        setAutoHide(true);
+        setAutoFix(true);
+        setHideOnEscape(true);
+        setSkin(createDefaultSkin());
     }
 
     public ObservableList<RouteProperty> checkFilter(ObservableList<RouteProperty> data) {
@@ -49,11 +52,11 @@ public class FilterPopup<S, T> extends PopupControl {
     }
 
     public void showPopup() {
-        Node node = this.filteredTableColumn.getGraphic().getParent().getParent();
+        Node node = filteredTableColumn.getGraphic().getParent().getParent();
         if (node.getScene() != null && node.getScene().getWindow() != null) {
-            if (!this.isShowing()) {
+            if (!isShowing()) {
                 Window parent = node.getScene().getWindow();
-                this.show(parent, parent.getX() + node.localToScene(0.0D, 0.0D).getX() +
+                show(parent, parent.getX() + node.localToScene(0.0D, 0.0D).getX() +
                         node.getScene().getX(), parent.getY() + node.localToScene(0.0D, 0.0D).getY()
                         + node.getScene().getY() + node.getLayoutBounds().getHeight());
             }
@@ -86,7 +89,7 @@ public class FilterPopup<S, T> extends PopupControl {
 
         @Override
         public FilterPopup<S, T> getSkinnable() {
-            return this.filterPopup;
+            return filterPopup;
         }
 
         @Override

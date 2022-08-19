@@ -1,5 +1,6 @@
 package gui;
 
+import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
@@ -17,20 +18,24 @@ public class ScriptPopup extends PopupControl {
     public ScriptPopup(Button scriptButton) {
         super();
         this.scriptButton = scriptButton;
-        this.setAutoHide(true);
-        this.setAutoFix(true);
-        this.setHideOnEscape(true);
-        this.setSkin(createDefaultSkin());
+        setAutoHide(true);
+        setAutoFix(true);
+        setHideOnEscape(true);
+        setSkin(createDefaultSkin());
+        Platform.runLater(() -> {
+            showPopup();
+            hide();
+        });
     }
 
     public void showPopup() {
         if (scriptButton.getScene() != null && scriptButton.getScene().getWindow() != null) {
-            if (!this.isShowing()) {
+            if (!isShowing()) {
                 Window parent = scriptButton.getScene().getWindow();
-                this.show(parent, parent.getX() + scriptButton.localToScene(0.0D, 0.0D).getX() +
-                                scriptButton.getScene().getX() + ((scriptButton.getWidth() - ((VBox)getSkin().getNode()).getWidth()) / 2),
-                        parent.getY() + scriptButton.localToScene(0.0D, 0.0D).getY()
-                                + scriptButton.getScene().getY() + scriptButton.getLayoutBounds().getHeight());
+                show(parent, parent.getX() + scriptButton.localToScene(0.0D, 0.0D).getX() +
+                        scriptButton.getScene().getX() + ((scriptButton.getWidth() - ((VBox)getSkin().getNode()).getWidth()) / 2),
+                parent.getY() + scriptButton.localToScene(0.0D, 0.0D).getY()
+                        + scriptButton.getScene().getY() + scriptButton.getLayoutBounds().getHeight());
             }
         } else {
             throw new IllegalStateException("Can not show popup. The node must be attached to a scene/window.");

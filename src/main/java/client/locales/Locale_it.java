@@ -28,7 +28,7 @@ public class Locale_it extends ListResourceBundle {
                 {"scriptPath", "Percorso fino allo script"},
                 {"execute", "Eseguire"},
                 {"name", "Nome"},
-                {"fromName", "From nome"},
+                {"fromName", "Nome 'Da'"},
                 {"distance", "Avstand"},
                 {"remove", "Rimuovere"},
                 {"send", "Inviare"},
@@ -86,7 +86,13 @@ public class Locale_it extends ListResourceBundle {
                 {"inputPositiveIntPort", "Immettere un numero intero positivo come porta"},
                 {"invalidPort", "Impossibile connettersi su questa porta"},
                 {"authorizationUnsuccessful", "Impossibile accedere"},
-                {"registerUnsuccessful", "Impossibile creare un account"}
+                {"registerUnsuccessful", "Impossibile creare un account"},
+                {"selectPoint", "Scegli un punto"},
+                {"pointCreator", "Creatore del punto"},
+                {"from", "Da"},
+                {"to", "Al"},
+                {"noNextLine", "Durante l'esecuzione dello script, il programma ha raggiunto la fine del file, " +
+                        "quindi non è stato completato correttamente"}
         };
     }
 }

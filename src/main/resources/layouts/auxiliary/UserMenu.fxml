@@ -9,18 +9,19 @@
 <VBox xmlns="http://javafx.com/javafx"
       xmlns:fx="http://javafx.com/fxml"
       fx:controller="gui.controllers.auxiliary.UserMenuController"
-      alignment="CENTER" spacing="15" style="-fx-background-color: white; -fx-border-color: grey">
+      alignment="CENTER" spacing="15"
+      stylesheets="@../../css/main.css" styleClass="popup">
     <padding>
         <Insets bottom="10" left="10" right="10" top="10" />
     </padding>
-    <Button fx:id="removeElementsButton" onAction="#removeAllUsersElements" wrapText="true">
+    <Button fx:id="removeElementsButton" onAction="#removeAllUsersElements" wrapText="true" >
         <graphic>
             <ImageView fitWidth="15" preserveRatio="true">
                 <Image url="@../../icons/trashIconBlack.png" />
             </ImageView>
         </graphic>
     </Button>
-    <Button fx:id="exitButton" onAction="#exit">
+    <Button fx:id="exitButton">
         <graphic>
             <ImageView fitWidth="15" preserveRatio="true">
                 <Image url="@../../icons/exitIcon.png" />
