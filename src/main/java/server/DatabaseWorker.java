@@ -8,11 +8,12 @@ import general.route.location.first.Location;
 import java.io.*;
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 public class DatabaseWorker {
     private static Connection connection;
-    private static org.apache.logging.log4j.Logger logger;
+    private static final org.apache.logging.log4j.Logger logger;
     static {
         logger = org.apache.logging.log4j.LogManager.getLogger();
         try {
@@ -37,7 +38,7 @@ public class DatabaseWorker {
     }
 
     private static List<Route> getRoutes(ResultSet resultSet) throws SQLException {
-        List<Route> data = new ArrayList<>();
+        List<Route> data = new LinkedList<>();
         while (resultSet.next()) {
             data.add(new Route(
                     resultSet.getString("name"), resultSet.getDate("creation_date"),

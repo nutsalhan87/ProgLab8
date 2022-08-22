@@ -201,4 +201,8 @@ public class Commands {
     public static Serializable getData(List<Object> arguments, RouteCollection dataCollection, User user) {
         return (Serializable) dataCollection.getData();
     }
+
+    public static Serializable getLastUpdate(List<Object> arguments, RouteCollection dataCollection, User user) {
+        return dataCollection.getLastUpdate();
+    }
 }

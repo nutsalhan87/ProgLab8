@@ -22,6 +22,7 @@ public enum CommandList {
     NO_COMMAND("no_command", Commands::doNothing),
     NEW_USER("new_user", Commands::doNothing),
     LOG_IN("log_in", Commands::doNothing),
+    GET_LAST_UPDATE("", Commands::getLastUpdate),
     CHECK_ID("", Commands::checkId),
     GET_DATA("", Commands::getData);
 

@@ -23,6 +23,7 @@ public class BackendInteractions {
     private User user;
     private final SocketChannel socketChannel;
     private final ObservableList<RouteProperty> routePropertyObservableList;
+    private long lastUpdatedOnServer;
 
     public BackendInteractions(int port) throws ConnectException {
         socketChannel = Connector.connectedSocket(port);
@@ -37,7 +38,7 @@ public class BackendInteractions {
         this.user = Authorizer.createAccount(socketChannel, login, password);
     }
 
-    public Answer sendRequestAndGetAnswer(Request request) throws IOException {
+    public synchronized Answer sendRequestAndGetAnswer(Request request) throws IOException {
         SendRequest.sendRequest(request, socketChannel);
         return GetAnswer.getAnswer(socketChannel);
     }
@@ -51,22 +52,21 @@ public class BackendInteractions {
     }
 
     public void refreshData() throws IOException {
-        Request request = new Request(CommandList.GET_DATA, new LinkedList<>(), getUser());
-        Answer answer = sendRequestAndGetAnswer(request);
+        Request lastUpdatedRequest = new Request(CommandList.GET_LAST_UPDATE, new LinkedList<>(), getUser());
+        Answer lastUpdatedAnswer = sendRequestAndGetAnswer(lastUpdatedRequest);
+        if (lastUpdatedOnServer == (Long) lastUpdatedAnswer.getAnswer()) {
+            return;
+        }
+        lastUpdatedOnServer = (Long) lastUpdatedAnswer.getAnswer();
+
+        Request dataRequest = new Request(CommandList.GET_DATA, new LinkedList<>(), getUser());
+        Answer dataAnswer = sendRequestAndGetAnswer(dataRequest);
 
         ObservableList<RouteProperty> newData = FXCollections.observableArrayList();
-        for (Route route : (List<Route>) answer.getAnswer()) {
+        for (Route route : (List<Route>) dataAnswer.getAnswer()) {
             newData.add(new RouteProperty(route));
         }
-        try {
-            Iterator<RouteProperty> iterator = newData.listIterator();
-            if (routePropertyObservableList.size() < newData.size() ||
-                    routePropertyObservableList.stream().anyMatch(r -> !r.equalsByValues(iterator.next()))) {
-                routePropertyObservableList.setAll(newData);
-            }
-        } catch (NoSuchElementException exception) {
-            routePropertyObservableList.setAll(newData);
-        }
+        routePropertyObservableList.setAll(newData);
     }
 
     public void executeScript(String scriptPath) throws FileNotFoundException {
