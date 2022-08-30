@@ -3,11 +3,9 @@ package gui;
 import javafx.application.Application;
 import javafx.stage.Stage;
 
-import java.io.IOException;
-
 public class UserInterface extends Application {
     @Override
-    public void start(Stage primaryStage) throws IOException {
+    public void start(Stage primaryStage) {
         SceneControl.launch(primaryStage);
     }
 

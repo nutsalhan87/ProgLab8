@@ -31,13 +31,11 @@ public class DataReloader {
                     });
                     Thread.sleep(1000);
                 }
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
+            } catch (InterruptedException ignored) {}
         });
     }
 
     public void stopReloading() {
-        executorService.shutdown();
+        executorService.shutdownNow();
     }
 }
