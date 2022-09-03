@@ -7,8 +7,9 @@ import java.net.ServerSocket;
 import java.sql.SQLException;
 
 public class Server {
+    private static final org.apache.logging.log4j.Logger logger = org.apache.logging.log4j.LogManager.getLogger();
+    
     public static void main(String[] args) throws IOException {
-        org.apache.logging.log4j.Logger logger = org.apache.logging.log4j.LogManager.getLogger();
 
         RouteCollection routeCollection = new RouteCollection();
         try {

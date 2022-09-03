@@ -22,8 +22,7 @@ public class Account {
     private static final org.apache.logging.log4j.Logger logger;
     static {
         logger = org.apache.logging.log4j.LogManager.getLogger();
-        try {
-            BufferedReader bufferedReader = new BufferedReader(new FileReader("database.txt"));
+        try (BufferedReader bufferedReader = new BufferedReader(new FileReader("database.txt"))) {
             String url = bufferedReader.readLine();
             String user = bufferedReader.readLine();
             String password = bufferedReader.readLine();

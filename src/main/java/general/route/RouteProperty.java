@@ -1,6 +1,5 @@
 package general.route;
 
-import client.locales.LocaleManager;
 import javafx.beans.property.*;
 
 import java.util.Date;

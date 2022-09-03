@@ -2,9 +2,6 @@ package gui;
 
 import general.route.RouteProperty;
 import gui.controllers.auxiliary.FilterMenuController;
-import javafx.animation.FadeTransition;
-import javafx.animation.Interpolator;
-import javafx.animation.ScaleTransition;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
@@ -12,9 +9,7 @@ import javafx.scene.Node;
 import javafx.scene.control.PopupControl;
 import javafx.scene.control.Skin;
 import javafx.scene.layout.VBox;
-import javafx.scene.paint.Color;
 import javafx.stage.Window;
-import javafx.util.Duration;
 
 import java.io.IOException;
 import java.net.URL;

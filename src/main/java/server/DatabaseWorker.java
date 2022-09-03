@@ -7,7 +7,6 @@ import general.route.location.first.Location;
 
 import java.io.*;
 import java.sql.*;
-import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -16,8 +15,7 @@ public class DatabaseWorker {
     private static final org.apache.logging.log4j.Logger logger;
     static {
         logger = org.apache.logging.log4j.LogManager.getLogger();
-        try {
-            BufferedReader bufferedReader = new BufferedReader(new FileReader("database.txt"));
+        try (BufferedReader bufferedReader = new BufferedReader(new FileReader("database.txt"))) {
             String url = bufferedReader.readLine();
             String user = bufferedReader.readLine();
             String password = bufferedReader.readLine();
