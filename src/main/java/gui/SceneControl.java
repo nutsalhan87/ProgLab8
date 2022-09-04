@@ -4,6 +4,7 @@ import client.BackendInteractions;
 import client.DataReloader;
 import gui.controllers.auxiliary.MessageController;
 import gui.controllers.main.WorkspaceController;
+import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
@@ -15,7 +16,7 @@ import java.io.IOException;
 import java.net.ConnectException;
 import java.net.URL;
 
-public class SceneControl {
+public class SceneControl extends Application {
     private static Stage stage;
     private static BackendInteractions backendInteractor;
     private static FXMLLoader workspaceLoader;
@@ -23,7 +24,8 @@ public class SceneControl {
     private static Scene visualization;
     private static DataReloader dataReloader;
 
-    public static void launch(Stage primaryStage) {
+    @Override
+    public void start(Stage primaryStage) {
         stage = primaryStage;
         openWelcomeMenu();
         stage.setMinHeight(768);
@@ -31,6 +33,10 @@ public class SceneControl {
         stage.setTitle("Dagestan");
         stage.getIcons().add(new Image("icons/globeIconBlack.png"));
         stage.show();
+    }
+
+    public static void main(String[] args) {
+        launch(args);
     }
 
     public static BackendInteractions getBackendInteractor() {
